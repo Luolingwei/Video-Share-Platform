@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/userLogin/login",
     "pages/userRegist/regist",
     "pages/index/index"
   ],
@@ -9,6 +10,7 @@
     "navigationBarTitleText": "Luo's Mini Video",
     "navigationBarTextStyle": "black"
   },
+  "debug": true,
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
