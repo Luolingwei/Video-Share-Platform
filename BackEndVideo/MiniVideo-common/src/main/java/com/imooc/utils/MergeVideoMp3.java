@@ -11,13 +11,12 @@ public class MergeVideoMp3 {
 	private String ffmpegEXE;
 	
 	public MergeVideoMp3(String ffmpegEXE) {
-		super();
 		this.ffmpegEXE = ffmpegEXE;
 	}
 	
 	public void convertor(String videoInputPath, String mp3InputPath,
 			double seconds, String videoOutputPath) throws Exception {
-//		ffmpeg.exe -i 苏州大裤衩.mp4 -i bgm.mp3 -t 7 -y 新的视频.mp4
+//./ffmpeg -i newTest.mp4 -i bgm1.mp3 -t 10 -y newVideo.mp4
 		List<String> command = new ArrayList<>();
 		command.add(ffmpegEXE);
 		
@@ -36,34 +35,28 @@ public class MergeVideoMp3 {
 //		for (String c : command) {
 //			System.out.print(c + " ");
 //		}
-		
+
 		ProcessBuilder builder = new ProcessBuilder(command);
 		Process process = builder.start();
-		
+
 		InputStream errorStream = process.getErrorStream();
 		InputStreamReader inputStreamReader = new InputStreamReader(errorStream);
-		BufferedReader br = new BufferedReader(inputStreamReader);
-		
+		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
 		String line = "";
-		while ( (line = br.readLine()) != null ) {
+		while ((line = bufferedReader.readLine()) != null){
 		}
-		
-		if (br != null) {
-			br.close();
-		}
-		if (inputStreamReader != null) {
-			inputStreamReader.close();
-		}
-		if (errorStream != null) {
-			errorStream.close();
-		}
+
+		if (bufferedReader!=null) bufferedReader.close();
+		if (inputStreamReader!=null) inputStreamReader.close();
+		if (errorStream!=null) errorStream.close();
 		
 	}
 
 	public static void main(String[] args) {
-		MergeVideoMp3 ffmpeg = new MergeVideoMp3("C:\\ffmpeg\\bin\\ffmpeg.exe");
+		MergeVideoMp3 ffmpeg = new MergeVideoMp3("/Users/luolingwei/Application/ffmpeg/ffmpeg");
 		try {
-			ffmpeg.convertor("C:\\苏州大裤衩.mp4", "C:\\music.mp3", 7.1, "C:\\这是通过java生产的视频.mp4");
+			ffmpeg.convertor("/Users/luolingwei/Application/ffmpeg/newTest.mp4", "/Users/luolingwei/Application/ffmpeg/bgm1.mp3", 10.0, "/Users/luolingwei/Application/ffmpeg/newVideo.mp4");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

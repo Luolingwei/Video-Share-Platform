@@ -52,12 +52,6 @@ Page({
       wx.showLoading({
         title: '上传中',
       });
-      console.log(user.id);
-      console.log(bgmId);
-      console.log(desc);
-      console.log(duration);
-      console.log(tmpHeight);
-      console.log(tmpWidth);
       wx.uploadFile({
         url: serverUrl + '/video/upload',
         formData: {
@@ -81,15 +75,50 @@ Page({
             wx.showToast({
               title: '上传成功',
               icon: "success"
+            }),
+            wx.navigateBack({
+              delta: 1,
             })
-          } else {
+            // 视频上传成功后, 上传封面
+          //   var videoId = data.data;
+          //   wx.showLoading({
+          //     title: '上传中',
+          //   });
+          //   wx.uploadFile({
+          //     url: serverUrl + '/video/uploadCover',
+          //     formData: {
+          //       userId: user.id,
+          //       videoId: videoId
+          //     },
+          //     filePath: tmpCoverUrl,
+          //     name: 'file',
+          //     header: {
+          //       'content-type': 'application/json', // 默认值
+          //     },
+          //     success : function (res){
+          //       var data = JSON.parse(res.data);
+          //       if (data.status == 200){
+          //         wx.showToast({
+          //           title: '上传成功',
+          //           icon: "success"
+          //         })
+          //         wx.navigateBack({
+          //           delta: 1,
+          //         })
+          //       } else {
+          //         wx.showToast({
+          //           title: '上传失败',
+          //         })
+          //     }
+          //   }
+          // })
+        } else {
             wx.showToast({
               title: '上传失败',
             })
           }
         }
       })
-
     }
 })
 

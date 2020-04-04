@@ -57,15 +57,15 @@ public class VideoServiceImpl implements VideoService {
 	
 	@Autowired
 	private Sid sid;
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public String saveVideo(Videos video) {
-		
+
 		String id = sid.nextShort();
 		video.setId(id);
 		videosMapper.insertSelective(video);
-		
+
 		return id;
 	}
 

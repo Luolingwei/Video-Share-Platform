@@ -32,9 +32,9 @@ public class FetchVideoCover {
 		
 		command.add(coverOutputPath);
 		
-		for (String c : command) {
-			System.out.print(c + " ");
-		}
+//		for (String c : command) {
+//			System.out.print(c + " ");
+//		}
 		
 		ProcessBuilder builder = new ProcessBuilder(command);
 		Process process = builder.start();
@@ -46,7 +46,7 @@ public class FetchVideoCover {
 		String line = "";
 		while ( (line = br.readLine()) != null ) {
 		}
-		
+
 		if (br != null) {
 			br.close();
 		}
@@ -76,9 +76,9 @@ public class FetchVideoCover {
 	
 	public static void main(String[] args) {
 		// 获取视频信息。
-		FetchVideoCover videoInfo = new FetchVideoCover("c:\\ffmpeg\\bin\\ffmpeg.exe");
+		FetchVideoCover videoInfo = new FetchVideoCover("/Users/luolingwei/Application/ffmpeg/ffmpeg");
 		try {
-			videoInfo.getCover("c:\\北京北京.avi","c:\\北京.jpg");
+			videoInfo.getCover("/Users/luolingwei/Application/ffmpeg/test.mp4","/Users/luolingwei/Application/ffmpeg/newCover.jpg");
 
 		} catch (Exception e) {
 			e.printStackTrace();

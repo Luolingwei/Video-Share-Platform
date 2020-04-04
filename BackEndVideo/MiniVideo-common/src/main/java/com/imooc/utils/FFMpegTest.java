@@ -9,56 +9,52 @@ import java.util.List;
 public class FFMpegTest {
 
 	private String ffmpegEXE;
-	
+
 	public FFMpegTest(String ffmpegEXE) {
-		super();
 		this.ffmpegEXE = ffmpegEXE;
 	}
-	
+
 	public void convertor(String videoInputPath, String videoOutputPath) throws Exception {
 //		ffmpeg -i input.mp4 -y output.avi
+
+		// 空格地方切开加入List即可执行
 		List<String> command = new ArrayList<>();
 		command.add(ffmpegEXE);
-		
 		command.add("-i");
 		command.add(videoInputPath);
 		command.add("-y");
 		command.add(videoOutputPath);
-		
-		for (String c : command) {
-			System.out.print(c + " ");
-		}
-		
+//		for (String c: command){
+//			System.out.print(c+" ");
+//		}
 		ProcessBuilder builder = new ProcessBuilder(command);
 		Process process = builder.start();
-		
+
 		InputStream errorStream = process.getErrorStream();
 		InputStreamReader inputStreamReader = new InputStreamReader(errorStream);
-		BufferedReader br = new BufferedReader(inputStreamReader);
-		
+		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
 		String line = "";
-		while ( (line = br.readLine()) != null ) {
+		while ((line = bufferedReader.readLine()) != null){
 		}
-		
-		if (br != null) {
-			br.close();
-		}
-		if (inputStreamReader != null) {
-			inputStreamReader.close();
-		}
-		if (errorStream != null) {
-			errorStream.close();
-		}
-		
+
+		if (bufferedReader!=null) bufferedReader.close();
+		if (inputStreamReader!=null) inputStreamReader.close();
+		if (errorStream!=null) errorStream.close();
+
 	}
 
 	public static void main(String[] args) {
-		FFMpegTest ffmpeg = new FFMpegTest("C:\\ffmpeg\\bin\\ffmpeg.exe");
+
+		FFMpegTest ffmpeg = new FFMpegTest("/Users/luolingwei/Application/ffmpeg/ffmpeg");
+
 		try {
-			ffmpeg.convertor("C:\\苏州大裤衩.mp4", "C:\\北京北京.avi");
+			ffmpeg.convertor("/Users/luolingwei/Application/ffmpeg/IMG_1980.MOV", "/Users/luolingwei/Application/ffmpeg/test.mp4");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+
 	}
 
 }

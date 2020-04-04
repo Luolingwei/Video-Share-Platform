@@ -140,7 +140,6 @@ Page({
         var tmpWidth = res.width;
         var tmpVideoUrl = res.tempFilePath;
         var tmpCoverUrl = res.thumbTempFilePath;
-
         if (duration>30){
           wx.showToast({
             title: '视频长度不能超过30秒',

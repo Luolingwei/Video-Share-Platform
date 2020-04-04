@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.UUID;
 
+import com.imooc.enums.BGMOperatorTypeEnum;
+import com.imooc.mapper.BgmMapper;
 import com.imooc.pojo.Users;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -72,24 +74,28 @@ public class VideoController extends BasicController {
 			return IMoocJSONResult.errorMsg("用户id不能为空...");
 		}
 
-		// 文件保存的命名空间
-		String fileSpace = "/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/UserFilesDB";
 		// 具体路径
 		String uploadPathDB = "/" + userId + "/video";
+		String coverPathDB = "/" + userId + "/video";
 
 		FileOutputStream fileOutputStream = null;
 		InputStream inputStream = null;
+		String finalVideoPath = "";
+
 		try {
 			if (file != null) {
 
 				String fileName = file.getOriginalFilename();
+				String fileNamePrefix = fileName.split("\\.")[0];
+
 				if (StringUtils.isNotBlank(fileName)) {
 					// 文件上传的最终保存路径
-					String finalFacePath = fileSpace + uploadPathDB + "/" + fileName;
+					finalVideoPath = FILE_SPACE + uploadPathDB + "/" + fileName;
 					// 设置数据库保存的路径
 					uploadPathDB += ("/" + fileName);
+					coverPathDB += ("/" + fileNamePrefix + ".jpg");
 
-					File outFile = new File(finalFacePath);
+					File outFile = new File(finalVideoPath);
 					if (outFile.getParentFile() != null || !outFile.getParentFile().isDirectory()) {
 						// 创建父文件夹
 						outFile.getParentFile().mkdirs();
@@ -113,41 +119,74 @@ public class VideoController extends BasicController {
 			}
 		}
 
-		return IMoocJSONResult.ok();
+		// 判断bgm是否为空，如果不为空，将存储的视频(无声)和bgm合成新的视频, 并更新uploadPathDB和finalVideoPath
+		if (StringUtils.isNoneBlank(bgmId)){
+			Bgm bgm = bgmService.queryBgmById(bgmId);
+			String mp3InpputPath = FILE_SPACE + bgm.getPath();
+			MergeVideoMp3 tool = new MergeVideoMp3(FFMPEG_EXE);
+			String videoInputPath = finalVideoPath;
+			String videoOutputName = UUID.randomUUID().toString() + ".mp4";
+			uploadPathDB = "/" + userId + "/video" +  "/" + videoOutputName;
+			finalVideoPath = FILE_SPACE + uploadPathDB;
+			tool.convertor(videoInputPath,mp3InpputPath,videoSeconds,finalVideoPath);
+		}
+
+		System.out.println("uploadPathDB: "+ uploadPathDB);
+		System.out.println("videoOutputPath: "+ finalVideoPath);
+
+		// 对视频截取封面
+		String finalCoverPath = FILE_SPACE + coverPathDB;
+		FetchVideoCover fetcher = new FetchVideoCover(FFMPEG_EXE);
+		fetcher.getCover(finalVideoPath,finalCoverPath);
+
+		// 保存视频信息到数据库
+		Videos video = new Videos();
+		video.setAudioId(bgmId);
+		video.setUserId(userId);
+		video.setVideoSeconds((float)videoSeconds);
+		video.setVideoHeight(videoHeight);
+		video.setVideoWidth(videoWidth);
+		video.setVideoDesc(desc);
+		video.setVideoPath(uploadPathDB);
+		video.setStatus(VideoStatusEnum.SUCCESS.value);
+		video.setCreateTime(new Date());
+		video.setCoverPath(coverPathDB);
+
+		String videoId = videoService.saveVideo(video);
+		return IMoocJSONResult.ok(videoId);
 	}
-	
+
+
 //	@ApiOperation(value="上传封面", notes="上传封面的接口")
 //	@ApiImplicitParams({
-//		@ApiImplicitParam(name="userId", value="用户id", required=true,
-//				dataType="String", paramType="form"),
-//		@ApiImplicitParam(name="videoId", value="视频主键id", required=true,
+//			@ApiImplicitParam(name="userId", value="用户id", required=true,
+//					dataType="String", paramType="form"),
+//			@ApiImplicitParam(name="videoId", value="视频主键id", required=true,
 //				dataType="String", paramType="form")
 //	})
 //	@PostMapping(value="/uploadCover", headers="content-type=multipart/form-data")
-//	public IMoocJSONResult uploadCover(String userId,
+//	public IMoocJSONResult uploadCover( String userId,
 //				String videoId,
 //				@ApiParam(value="视频封面", required=true)
 //				MultipartFile file) throws Exception {
 //
 //		if (StringUtils.isBlank(videoId) || StringUtils.isBlank(userId)) {
-//			return IMoocJSONResult.errorMsg("视频主键id和用户id不能为空...");
+//			return IMoocJSONResult.errorMsg("视频id和用户id不能为空...");
 //		}
 //
-//		// 文件保存的命名空间
-////		String fileSpace = "C:/imooc_videos_dev";
-//		// 保存到数据库中的相对路径
+//		// 具体路径
 //		String uploadPathDB = "/" + userId + "/video";
 //
 //		FileOutputStream fileOutputStream = null;
 //		InputStream inputStream = null;
-//		// 文件上传的最终保存路径
 //		String finalCoverPath = "";
+//
 //		try {
 //			if (file != null) {
 //
 //				String fileName = file.getOriginalFilename();
 //				if (StringUtils.isNotBlank(fileName)) {
-//
+//					// 文件上传的最终保存路径
 //					finalCoverPath = FILE_SPACE + uploadPathDB + "/" + fileName;
 //					// 设置数据库保存的路径
 //					uploadPathDB += ("/" + fileName);
@@ -176,10 +215,13 @@ public class VideoController extends BasicController {
 //			}
 //		}
 //
-//		videoService.updateVideo(videoId, uploadPathDB);
+//		videoService.updateVideo(videoId,uploadPathDB);
 //
 //		return IMoocJSONResult.ok();
 //	}
+
+
+
 //
 //	/**
 //	 *
