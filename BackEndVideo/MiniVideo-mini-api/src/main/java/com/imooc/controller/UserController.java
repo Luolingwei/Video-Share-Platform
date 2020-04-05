@@ -90,7 +90,7 @@ public class UserController extends BasicController {
 		user.setId(userId);
 		user.setFaceImage(uploadPathDB);
 		userService.updateUserInfo(user);
-		
+
 		return IMoocJSONResult.ok(uploadPathDB);
 	}
 

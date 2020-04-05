@@ -47,7 +47,7 @@ Page({
       var tmpVideoUrl = me.data.videoParams.tmpVideoUrl;
       var tmpCoverUrl = me.data.videoParams.tmpCoverUrl;
 
-      var user = app.userInfo;
+      var user = app.getGlobalUserInfo(); // 修改原有的全局对象为本地缓存
       var serverUrl = app.serverUrl;
       wx.showLoading({
         title: '上传中',

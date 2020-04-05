@@ -8,7 +8,9 @@ Page({
   },
   onLoad: function (params) {
       var me = this;
-      var user = app.userInfo;
+      // var user = app.userInfo;
+      // 修改原有的全局对象为本地缓存
+      var user = app.getGlobalUserInfo(); 
       var serverUrl = app.serverUrl;
       wx.showLoading({
         title: '请等待...',
@@ -45,7 +47,9 @@ Page({
   },
 
   logout: function () {
-    var user = app.userInfo;
+    // var user = app.userInfo;
+    // 修改原有的全局对象为本地缓存
+    var user = app.getGlobalUserInfo(); 
     var serverUrl = app.serverUrl;
     wx.showLoading({
       title: '请等待...',
@@ -65,7 +69,9 @@ Page({
             icon:'none',
             duration:2000
           }),
-          app.userInfo = null;
+          // app.userInfo = null;
+          // 注销后清空缓存
+          wx.removeStorageSync('userInfo');
           wx.navigateTo({
             url: '../userLogin/login',
           })
@@ -84,7 +90,9 @@ Page({
         // tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
         console.log(tempFilePaths);
-        var user = app.userInfo;
+        // var user = app.userInfo;
+        // 修改原有的全局对象为本地缓存
+        var user = app.getGlobalUserInfo(); 
         var serverUrl = app.serverUrl;
         wx.showLoading({
           title: '上传中',

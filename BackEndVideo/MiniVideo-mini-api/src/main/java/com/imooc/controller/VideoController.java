@@ -86,7 +86,8 @@ public class VideoController extends BasicController {
 			if (file != null) {
 
 				String fileName = file.getOriginalFilename();
-				String fileNamePrefix = fileName.split("\\.")[0];
+				int lastPointIdx = fileName.lastIndexOf(".");
+				String fileNamePrefix = fileName.substring(0,lastPointIdx);
 
 				if (StringUtils.isNotBlank(fileName)) {
 					// 文件上传的最终保存路径
@@ -221,30 +222,34 @@ public class VideoController extends BasicController {
 //	}
 
 
+	/**
+	 *
+	 * @Description: 分页和搜索查询视频列表
+	 * isSaveRecord：1 - 需要保存
+	 * 				 0 - 不需要保存 ，或者为空的时候
+	 *
+	 * 	用Videos对象传入多个视频相关的筛选条件，首页展示时传入空对象，模糊查询全部 (desc="")
+	 * 	每次分页的对象是所有和搜索匹配的视频
+	 * 	只有从搜索跳转到主页时isSaveRecord=1, 保存搜索记录到数据库，其他(上拉刷新, 下拉刷新)都不保存当前的searchContent, 因为跳转过来已经保存过
+	 */
+	@ApiOperation(value="请求视频列表", notes="请求视频列表的接口")
+	@PostMapping(value="/showAll")
+	public IMoocJSONResult showAll(@RequestBody Videos video, Integer isSaveRecord,
+								   Integer page, Integer pageSize) throws Exception {
 
-//
-//	/**
-//	 *
-//	 * @Description: 分页和搜索查询视频列表
-//	 * isSaveRecord：1 - 需要保存
-//	 * 				 0 - 不需要保存 ，或者为空的时候
-//	 */
-//	@PostMapping(value="/showAll")
-//	public IMoocJSONResult showAll(@RequestBody Videos video, Integer isSaveRecord,
-//			Integer page, Integer pageSize) throws Exception {
-//
-//		if (page == null) {
-//			page = 1;
-//		}
-//
-//		if (pageSize == null) {
-//			pageSize = PAGE_SIZE;
-//		}
-//
-//		PagedResult result = videoService.getAllVideos(video, isSaveRecord, page, pageSize);
-//		return IMoocJSONResult.ok(result);
-//	}
-//
+		if (page == null) {
+			page = 1;
+		}
+
+		if (pageSize == null) {
+			pageSize = PAGE_SIZE;
+		}
+
+		PagedResult result = videoService.getAllVideos(video, isSaveRecord, page, pageSize);
+		return IMoocJSONResult.ok(result);
+	}
+
+
 //	/**
 //	 * @Description: 我关注的人发的视频
 //	 */
@@ -288,19 +293,20 @@ public class VideoController extends BasicController {
 //
 //		return IMoocJSONResult.ok(videosList);
 //	}
-//
-//	@PostMapping(value="/hot")
-//	public IMoocJSONResult hot() throws Exception {
-//		return IMoocJSONResult.ok(videoService.getHotwords());
-//	}
-//
+
+	@ApiOperation(value="请求热搜词", notes="请求热搜词的接口")
+	@PostMapping(value="/hot")
+	public IMoocJSONResult hot() throws Exception {
+		return IMoocJSONResult.ok(videoService.getHotwords());
+	}
+
 //	@PostMapping(value="/userLike")
 //	public IMoocJSONResult userLike(String userId, String videoId, String videoCreaterId)
 //			throws Exception {
 //		videoService.userLikeVideo(userId, videoId, videoCreaterId);
 //		return IMoocJSONResult.ok();
 //	}
-//
+
 //	@PostMapping(value="/userUnLike")
 //	public IMoocJSONResult userUnLike(String userId, String videoId, String videoCreaterId) throws Exception {
 //		videoService.userUnLikeVideo(userId, videoId, videoCreaterId);

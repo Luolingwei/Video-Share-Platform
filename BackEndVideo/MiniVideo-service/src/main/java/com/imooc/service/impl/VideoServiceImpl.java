@@ -81,9 +81,8 @@ public class VideoServiceImpl implements VideoService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public PagedResult getAllVideos(Videos video, Integer isSaveRecord,
-			 Integer page, Integer pageSize) {
-		
+	public PagedResult getAllVideos(Videos video, Integer isSaveRecord, Integer page, Integer pageSize) {
+
 		// 保存热搜词
 		String desc = video.getVideoDesc();
 		String userId = video.getUserId();
@@ -94,18 +93,17 @@ public class VideoServiceImpl implements VideoService {
 			record.setContent(desc);
 			searchRecordsMapper.insert(record);
 		}
-		
-		PageHelper.startPage(page, pageSize);
-		List<VideosVO> list = videosMapperCustom.queryAllVideos(desc, userId);
-		
+
+		PageHelper.startPage(page,pageSize);
+		List<VideosVO> list = videosMapperCustom.queryAllVideos(desc);
+
 		PageInfo<VideosVO> pageList = new PageInfo<>(list);
-		
 		PagedResult pagedResult = new PagedResult();
 		pagedResult.setPage(page);
 		pagedResult.setTotal(pageList.getPages());
-		pagedResult.setRows(list);
 		pagedResult.setRecords(pageList.getTotal());
-		
+		pagedResult.setRows(list);
+
 		return pagedResult;
 	}
 	
