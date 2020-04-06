@@ -1,5 +1,6 @@
 package com.imooc;
 
+import com.imooc.controller.interceptor.MiniInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -17,28 +18,28 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 				.addResourceLocations("classpath:/META-INF/resources/")
 				.addResourceLocations("file:/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/UserFilesDB/");
 	}
-	
-//	@Bean(initMethod="init")
-//	public ZKCuratorClient zkCuratorClient() {
-//		return new ZKCuratorClient();
-//	}
-//
-//	@Bean
-//	public MiniInterceptor miniInterceptor() {
-//		return new MiniInterceptor();
-//	}
-//
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry) {
-//
-//		registry.addInterceptor(miniInterceptor()).addPathPatterns("/user/**")
-//				       .addPathPatterns("/video/upload", "/video/uploadCover",
-//				    		   			"/video/userLike", "/video/userUnLike",
-//				    		   			"/video/saveComment")
-//												  .addPathPatterns("/bgm/**")
-//												  .excludePathPatterns("/user/queryPublisher");
-//
-//		super.addInterceptors(registry);
-//	}
+
+	/**
+	 * registry为注册中心, 可以添加拦截器
+	 * addPathPatterns方法添加监听接口
+	 * @param registry
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(miniInterceptor()).addPathPatterns("/user/**")
+													.addPathPatterns("/bgm/**")
+													.addPathPatterns("/video/upload");
+		super.addInterceptors(registry);
+	}
+
+	/**
+	 * 注册拦截器
+	 * @return
+	 */
+	@Bean
+	public MiniInterceptor miniInterceptor(){
+		return new MiniInterceptor();
+	}
+
 
 }

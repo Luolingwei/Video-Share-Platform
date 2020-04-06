@@ -4,21 +4,19 @@ Page({
   data: {
   },
 
-  // onLoad: function (params) {
-  //   var me = this;
-  //   var redirectUrl = params.redirectUrl;
-  //   // debugger;
-  //   if (redirectUrl != null && redirectUrl != undefined && redirectUrl != '') {
-  //     redirectUrl = redirectUrl.replace(/#/g, "?");
-  //     redirectUrl = redirectUrl.replace(/@/g, "=");
-
-  //     me.redirectUrl = redirectUrl;
-  //   }
-  // },
+  onLoad: function (params) {
+    var me = this;
+    var redirectUrl = params.redirectUrl;
+    if (redirectUrl != null && redirectUrl != undefined && redirectUrl != '') {
+      redirectUrl = redirectUrl.replace(/#/g, "?");
+      redirectUrl = redirectUrl.replace(/@/g, "=");
+      me.redirectUrl = redirectUrl;
+    }
+  },
 
   // 登录  
   doLogin: function (e) {
-    // var me = this;
+    var me = this;
     var formObject = e.detail.value;
     var username = formObject.username;
     var password = formObject.password;
@@ -58,21 +56,17 @@ Page({
             // app.userInfo = res.data.data;
             // fixme 修改原有的全局对象为本地缓存
             app.setGlobalUserInfo(res.data.data);
-            // 页面跳转
-            wx.navigateTo({
-              url: '../mine/mine',
-            })
-            
-            // var redirectUrl = me.redirectUrl;
-            // if (redirectUrl != null && redirectUrl != undefined && redirectUrl != '') {
-            //   wx.redirectTo({
-            //     url: redirectUrl,
-            //   })
-            // } else {
-            //   wx.redirectTo({
-            //     url: '../mine/mine',
-            //   })
-            // }
+            // 页面跳转 (需要判断是否重定向)
+            var redirectUrl = me.redirectUrl;
+            if (redirectUrl != null && redirectUrl != undefined && redirectUrl != '') {
+              wx.redirectTo({
+                url: redirectUrl,
+              })
+            } else {
+              wx.redirectTo({
+                url: '../mine/mine',
+              })
+            }
             
           } else if (res.data.status == 500) {
             // 失败弹出框

@@ -1,7 +1,7 @@
 <view style='width:100%;height:100%;'>
 
 <video  id="myVideo" 
-src='http://192.168.1.178:8081/2003308BTN7Z3540/video/9f5b238a-e08f-4ccb-b044-311f47fa352b.mp4'
+src="{{src}}"
 muted="{{true}}"
 controls="{{true}}"
 autoplay="{{false}}"

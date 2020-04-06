@@ -105,7 +105,14 @@ Page({
   },
 
   showVideoInfo: function(e) {
-
+    var me = this;
+    var videoList = me.data.videoList;
+    var arrindex = e.target.dataset.arrindex;
+    // Json对象无法通过跳转传到下一个页面，先转成string
+    var videoInfo = JSON.stringify(videoList[arrindex]);
+    wx.redirectTo({
+      url: '../videoinfo/videoinfo?videoInfo='+videoInfo,
+    })
   }
 
 })
