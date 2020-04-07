@@ -105,17 +105,15 @@ public class UserServiceImpl implements UserService {
 		
 		Example example = new Example(UsersLikeVideos.class);
 		Criteria criteria = example.createCriteria();
-		
 		criteria.andEqualTo("userId", userId);
 		criteria.andEqualTo("videoId", videoId);
-		
 		List<UsersLikeVideos> list = usersLikeVideosMapper.selectByExample(example);
-		
-		if (list != null && list.size() >0) {
+
+		if (list!=null && list.size()>0){
 			return true;
 		}
-		
 		return false;
+
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)

@@ -1,5 +1,10 @@
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/Application.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/BasicController.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/Swagger2.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/BgmController.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/VideoController.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/UserController.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/WebMvcConfig.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/interceptor/MiniInterceptor.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/RegistLoginController.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/HelloWorldController.java

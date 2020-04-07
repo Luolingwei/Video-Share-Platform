@@ -300,18 +300,21 @@ public class VideoController extends BasicController {
 		return IMoocJSONResult.ok(videoService.getHotwords());
 	}
 
-//	@PostMapping(value="/userLike")
-//	public IMoocJSONResult userLike(String userId, String videoId, String videoCreaterId)
-//			throws Exception {
-//		videoService.userLikeVideo(userId, videoId, videoCreaterId);
-//		return IMoocJSONResult.ok();
-//	}
+	@ApiOperation(value="用户喜欢视频", notes="用户喜欢视频的接口")
+	@PostMapping(value="/userLike")
+	public IMoocJSONResult userLike(String userId, String videoId, String videoCreaterId)
+			throws Exception {
+		videoService.userLikeVideo(userId, videoId, videoCreaterId);
+		return IMoocJSONResult.ok();
+	}
 
-//	@PostMapping(value="/userUnLike")
-//	public IMoocJSONResult userUnLike(String userId, String videoId, String videoCreaterId) throws Exception {
-//		videoService.userUnLikeVideo(userId, videoId, videoCreaterId);
-//		return IMoocJSONResult.ok();
-//	}
+	@ApiOperation(value="用户取消喜欢视频", notes="用户取消喜欢视频的接口")
+	@PostMapping(value="/userUnLike")
+	public IMoocJSONResult userUnLike(String userId, String videoId, String videoCreaterId) throws Exception {
+		videoService.userUnLikeVideo(userId, videoId, videoCreaterId);
+		return IMoocJSONResult.ok();
+	}
+
 //
 //	@PostMapping("/saveComment")
 //	public IMoocJSONResult saveComment(@RequestBody Comments comment,

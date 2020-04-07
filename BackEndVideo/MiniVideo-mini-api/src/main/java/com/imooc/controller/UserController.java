@@ -113,30 +113,31 @@ public class UserController extends BasicController {
 		return IMoocJSONResult.ok(userVO);
 	}
 
+	@ApiOperation(value="查询用户信息", notes="查询用户信息的接口")
+	@PostMapping("/queryPublisher")
+	public IMoocJSONResult queryPublisher(String loginUserId, String videoId,
+			String publishUserId) throws Exception {
 
-//	@PostMapping("/queryPublisher")
-//	public IMoocJSONResult queryPublisher(String loginUserId, String videoId,
-//			String publishUserId) throws Exception {
-//
-//		if (StringUtils.isBlank(publishUserId)) {
-//			return IMoocJSONResult.errorMsg("");
-//		}
-//
-//		// 1. 查询视频发布者的信息
-//		Users userInfo = userService.queryUserInfo(publishUserId);
-//		UsersVO publisher = new UsersVO();
-//		BeanUtils.copyProperties(userInfo, publisher);
-//
-//		// 2. 查询当前登录者和视频的点赞关系
-//		boolean userLikeVideo = userService.isUserLikeVideo(loginUserId, videoId);
-//
-//		PublisherVideo bean = new PublisherVideo();
-//		bean.setPublisher(publisher);
-//		bean.setUserLikeVideo(userLikeVideo);
-//
-//		return IMoocJSONResult.ok(bean);
-//	}
-//
+		if (StringUtils.isBlank(publishUserId)) {
+			return IMoocJSONResult.errorMsg("");
+		}
+
+		PublisherVideo bean = new PublisherVideo();
+		// 1 查询视频发布者的信息
+		Users user = userService.queryUserInfo(publishUserId);
+		UsersVO publisher = new UsersVO();
+		BeanUtils.copyProperties(user, publisher);
+
+		// 2 查询当前登陆者和视频的点赞关系
+		boolean like = userService.isUserLikeVideo(loginUserId,videoId);
+
+		// 将上述两块信息封装到PublisherVideo中抛出
+		bean.setPublisher(publisher);
+		bean.setUserLikeVideo(like);
+
+		return IMoocJSONResult.ok(bean);
+	}
+
 //	@PostMapping("/beyourfans")
 //	public IMoocJSONResult beyourfans(String userId, String fanId) throws Exception {
 //

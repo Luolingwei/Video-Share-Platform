@@ -147,41 +147,42 @@ public class VideoServiceImpl implements VideoService {
 		return searchRecordsMapper.getHotwords();
 	}
 
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void userLikeVideo(String userId, String videoId, String videoCreaterId) {
-		// 1. 保存用户和视频的喜欢点赞关联关系表
-		String likeId = sid.nextShort();
-		UsersLikeVideos ulv = new UsersLikeVideos();
-		ulv.setId(likeId);
-		ulv.setUserId(userId);
-		ulv.setVideoId(videoId);
-		usersLikeVideosMapper.insert(ulv);
-		
-		// 2. 视频喜欢数量累加
+
+		// 1 保存用户和视频的喜欢点赞关联关系表
+		UsersLikeVideos usersLikeVideos = new UsersLikeVideos();
+		String likeid = sid.nextShort();
+		usersLikeVideos.setId(likeid);
+		usersLikeVideos.setUserId(userId);
+		usersLikeVideos.setVideoId(videoId);
+		usersLikeVideosMapper.insert(usersLikeVideos);
+
+		// 2 视频喜欢数量累加
 		videosMapperCustom.addVideoLikeCount(videoId);
-		
-		// 3. 用户受喜欢数量的累加
+
+		// 3 用户受喜欢数量的累加
 		usersMapper.addReceiveLikeCount(videoCreaterId);
+
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void userUnLikeVideo(String userId, String videoId, String videoCreaterId) {
-		// 1. 删除用户和视频的喜欢点赞关联关系表
-		
+
+		// 1 删除用户和视频的喜欢点赞关联关系表
 		Example example = new Example(UsersLikeVideos.class);
 		Criteria criteria = example.createCriteria();
-		
-		criteria.andEqualTo("userId", userId);
-		criteria.andEqualTo("videoId", videoId);
-		
+		criteria.andEqualTo("userId",userId);
+		criteria.andEqualTo("videoId",videoId);
 		usersLikeVideosMapper.deleteByExample(example);
-		
-		// 2. 视频喜欢数量累减
+
+		// 2 视频喜欢数量累减
 		videosMapperCustom.reduceVideoLikeCount(videoId);
-		
-		// 3. 用户受喜欢数量的累减
+
+		// 3 用户受喜欢数量的累减
 		usersMapper.reduceReceiveLikeCount(videoCreaterId);
 		
 	}
