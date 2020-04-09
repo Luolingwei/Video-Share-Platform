@@ -95,7 +95,7 @@ public class VideoServiceImpl implements VideoService {
 		}
 
 		PageHelper.startPage(page,pageSize);
-		List<VideosVO> list = videosMapperCustom.queryAllVideos(desc);
+		List<VideosVO> list = videosMapperCustom.queryAllVideos(desc,userId);
 
 		PageInfo<VideosVO> pageList = new PageInfo<>(list);
 		PagedResult pagedResult = new PagedResult();
@@ -110,34 +110,34 @@ public class VideoServiceImpl implements VideoService {
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
 	public PagedResult queryMyLikeVideos(String userId, Integer page, Integer pageSize) {
-		PageHelper.startPage(page, pageSize);
+
+		PageHelper.startPage(page,pageSize);
 		List<VideosVO> list = videosMapperCustom.queryMyLikeVideos(userId);
-				
+
 		PageInfo<VideosVO> pageList = new PageInfo<>(list);
-		
 		PagedResult pagedResult = new PagedResult();
-		pagedResult.setTotal(pageList.getPages());
-		pagedResult.setRows(list);
 		pagedResult.setPage(page);
+		pagedResult.setTotal(pageList.getPages());
 		pagedResult.setRecords(pageList.getTotal());
-		
+		pagedResult.setRows(list);
+
 		return pagedResult;
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
 	public PagedResult queryMyFollowVideos(String userId, Integer page, Integer pageSize) {
-		PageHelper.startPage(page, pageSize);
+
+		PageHelper.startPage(page,pageSize);
 		List<VideosVO> list = videosMapperCustom.queryMyFollowVideos(userId);
-				
+
 		PageInfo<VideosVO> pageList = new PageInfo<>(list);
-		
 		PagedResult pagedResult = new PagedResult();
-		pagedResult.setTotal(pageList.getPages());
-		pagedResult.setRows(list);
 		pagedResult.setPage(page);
+		pagedResult.setTotal(pageList.getPages());
 		pagedResult.setRecords(pageList.getTotal());
-		
+		pagedResult.setRows(list);
+
 		return pagedResult;
 	}
 

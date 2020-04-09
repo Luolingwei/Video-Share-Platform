@@ -112,6 +112,23 @@ Page({
   },
 
   showPublisher: function () {
+
+    // 保存重定向的信息, 如果用户信息为空, 跳转回来
+    var me = this;
+    var videoInfo = me.data.videoInfo;
+    var realUrl = '../mine/mine#publisherId@' + videoInfo.userId;
+    var userInfo = app.getGlobalUserInfo();
+    // 如果用户信息为空(未登录), 直接跳转到登录页面
+    if (userInfo == null || userInfo == undefined || userInfo == '') {
+      // debugger;
+      wx.navigateTo({
+        url: '../userLogin/login?redirectUrl=' + realUrl,
+      })
+    } else {
+      wx.navigateTo({
+        url: '../mine/mine?publisherId=' + videoInfo.userId,
+      })
+    }
   },
 
 

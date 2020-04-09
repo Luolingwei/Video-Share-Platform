@@ -250,49 +250,53 @@ public class VideoController extends BasicController {
 	}
 
 
-//	/**
-//	 * @Description: 我关注的人发的视频
-//	 */
-//	@PostMapping("/showMyFollow")
-//	public IMoocJSONResult showMyFollow(String userId, Integer page) throws Exception {
-//
-//		if (StringUtils.isBlank(userId)) {
-//			return IMoocJSONResult.ok();
-//		}
-//
-//		if (page == null) {
-//			page = 1;
-//		}
-//
-//		int pageSize = 6;
-//
-//		PagedResult videosList = videoService.queryMyFollowVideos(userId, page, pageSize);
-//
-//		return IMoocJSONResult.ok(videosList);
-//	}
-//
-//	/**
-//	 * @Description: 我收藏(点赞)过的视频列表
-//	 */
-//	@PostMapping("/showMyLike")
-//	public IMoocJSONResult showMyLike(String userId, Integer page, Integer pageSize) throws Exception {
-//
-//		if (StringUtils.isBlank(userId)) {
-//			return IMoocJSONResult.ok();
-//		}
-//
-//		if (page == null) {
-//			page = 1;
-//		}
-//
-//		if (pageSize == null) {
-//			pageSize = 6;
-//		}
-//
-//		PagedResult videosList = videoService.queryMyLikeVideos(userId, page, pageSize);
-//
-//		return IMoocJSONResult.ok(videosList);
-//	}
+	/**
+	 * @Description: 我关注的人发的视频
+	 */
+	@ApiOperation(value="请求用户关注的人的视频列表", notes="请求用户关注的人的视频列表的接口")
+	@PostMapping("/showMyFollow")
+	public IMoocJSONResult showMyFollow(String userId, Integer page, Integer pageSize) throws Exception {
+
+		if (StringUtils.isBlank(userId)) {
+			return IMoocJSONResult.ok();
+		}
+
+		if (page == null) {
+			page = 1;
+		}
+
+		if (pageSize == null) {
+			pageSize = PAGE_SIZE;
+		}
+
+		PagedResult videosList = videoService.queryMyFollowVideos(userId, page, pageSize);
+
+		return IMoocJSONResult.ok(videosList);
+	}
+
+	/**
+	 * @Description: 我收藏(点赞)过的视频列表
+	 */
+	@ApiOperation(value="请求用户喜欢的视频列表", notes="请求用户喜欢的视频列表的接口")
+	@PostMapping("/showMyLike")
+	public IMoocJSONResult showMyLike(String userId, Integer page, Integer pageSize) throws Exception {
+
+		if (StringUtils.isBlank(userId)) {
+			return IMoocJSONResult.ok();
+		}
+
+		if (page == null) {
+			page = 1;
+		}
+
+		if (pageSize == null) {
+			pageSize = PAGE_SIZE;
+		}
+
+		PagedResult videosList = videoService.queryMyLikeVideos(userId, page, pageSize);
+
+		return IMoocJSONResult.ok(videosList);
+	}
 
 	@ApiOperation(value="请求热搜词", notes="请求热搜词的接口")
 	@PostMapping(value="/hot")

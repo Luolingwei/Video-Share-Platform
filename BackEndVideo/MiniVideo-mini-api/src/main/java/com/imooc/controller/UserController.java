@@ -108,12 +108,12 @@ public class UserController extends BasicController {
 		UsersVO userVO = new UsersVO();
 		BeanUtils.copyProperties(userInfo, userVO);
 
-//		userVO.setFollow(userService.queryIfFollow(userId, fanId));
+		userVO.setFollow(userService.queryIfFollow(userId, fanId));
 
 		return IMoocJSONResult.ok(userVO);
 	}
 
-	@ApiOperation(value="查询用户信息", notes="查询用户信息的接口")
+	@ApiOperation(value="查询视频发布者信息", notes="查询视频发布者信息的接口")
 	@PostMapping("/queryPublisher")
 	public IMoocJSONResult queryPublisher(String loginUserId, String videoId,
 			String publishUserId) throws Exception {
@@ -138,29 +138,32 @@ public class UserController extends BasicController {
 		return IMoocJSONResult.ok(bean);
 	}
 
-//	@PostMapping("/beyourfans")
-//	public IMoocJSONResult beyourfans(String userId, String fanId) throws Exception {
-//
-//		if (StringUtils.isBlank(userId) || StringUtils.isBlank(fanId)) {
-//			return IMoocJSONResult.errorMsg("");
-//		}
-//
-//		userService.saveUserFanRelation(userId, fanId);
-//
-//		return IMoocJSONResult.ok("关注成功...");
-//	}
-//
-//	@PostMapping("/dontbeyourfans")
-//	public IMoocJSONResult dontbeyourfans(String userId, String fanId) throws Exception {
-//
-//		if (StringUtils.isBlank(userId) || StringUtils.isBlank(fanId)) {
-//			return IMoocJSONResult.errorMsg("");
-//		}
-//
-//		userService.deleteUserFanRelation(userId, fanId);
-//
-//		return IMoocJSONResult.ok("取消关注成功...");
-//	}
+	@ApiOperation(value="用户关注", notes="用户关注的接口")
+	@PostMapping("/beyourfans")
+	public IMoocJSONResult beyourfans(String userId, String fanId) throws Exception {
+
+		if(StringUtils.isBlank(userId) || StringUtils.isBlank(fanId)){
+			return IMoocJSONResult.errorMsg("");
+		}
+
+		userService.saveUserFanRelation(userId,fanId);
+
+		return IMoocJSONResult.ok("关注成功...");
+	}
+
+	@ApiOperation(value="用户取消关注", notes="用户取消关注的接口")
+	@PostMapping("/dontbeyourfans")
+	public IMoocJSONResult dontbeyourfans(String userId, String fanId) throws Exception {
+
+		if (StringUtils.isBlank(userId) || StringUtils.isBlank(fanId)) {
+			return IMoocJSONResult.errorMsg("");
+		}
+
+		userService.deleteUserFanRelation(userId, fanId);
+
+		return IMoocJSONResult.ok("取消关注成功...");
+	}
+
 //
 //	@PostMapping("/reportUser")
 //	public IMoocJSONResult reportUser(@RequestBody UsersReport usersReport) throws Exception {

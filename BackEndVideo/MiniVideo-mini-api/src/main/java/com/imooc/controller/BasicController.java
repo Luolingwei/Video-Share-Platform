@@ -20,6 +20,6 @@ public class BasicController {
 	public static final String FFMPEG_EXE = "/Users/luolingwei/Application/ffmpeg/ffmpeg";
 	
 	// 每页分页的记录数
-	public static final Integer PAGE_SIZE = 5;
+	public static final Integer PAGE_SIZE = 7;
 	
 }

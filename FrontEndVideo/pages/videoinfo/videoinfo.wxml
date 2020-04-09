@@ -2,7 +2,7 @@
 
 <video  id="myVideo" 
 src="{{src}}"
-muted="{{true}}"
+muted="{{false}}"
 controls="{{true}}"
 autoplay="{{false}}"
 loop="{{false}}"

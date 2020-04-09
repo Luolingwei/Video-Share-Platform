@@ -120,16 +120,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void saveUserFanRelation(String userId, String fanId) {
 
-		String relId = sid.nextShort();
-		
-		UsersFans userFan = new UsersFans();
-		userFan.setId(relId);
-		userFan.setUserId(userId);
-		userFan.setFanId(fanId);
-		
-		usersFansMapper.insert(userFan);
-		
+		// 1 保存用户和用户互相关注的关联关系表
+		UsersFans usersFans = new UsersFans();
+		String followid = sid.nextShort();
+		usersFans.setId(followid);
+		usersFans.setUserId(userId);
+		usersFans.setFanId(fanId);
+		usersFansMapper.insert(usersFans);
+
+		// 2 用户被关注数量累加
 		userMapper.addFansCount(userId);
+
+		// 3 用户关注数量累加
 		userMapper.addFollersCount(fanId);
 		
 	}
@@ -137,16 +139,18 @@ public class UserServiceImpl implements UserService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void deleteUserFanRelation(String userId, String fanId) {
-		
+
+		// 1 删除用户和用户相互关注的关联关系表
 		Example example = new Example(UsersFans.class);
 		Criteria criteria = example.createCriteria();
-		
-		criteria.andEqualTo("userId", userId);
-		criteria.andEqualTo("fanId", fanId);
-		
+		criteria.andEqualTo("userId",userId);
+		criteria.andEqualTo("fanId",fanId);
 		usersFansMapper.deleteByExample(example);
-		
+
+		// 2 用户被关注数量累减
 		userMapper.reduceFansCount(userId);
+
+		// 3 用户关注数量累减
 		userMapper.reduceFollersCount(fanId);
 		
 	}
