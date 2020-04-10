@@ -177,11 +177,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void reportUser(UsersReport userReport) {
 		
-		String urId = sid.nextShort();
-		userReport.setId(urId);
+		String reportId = sid.nextShort();
+		userReport.setId(reportId);
 		userReport.setCreateDate(new Date());
-		
+
 		usersReportMapper.insert(userReport);
+
 	}
 	
 }

@@ -68,6 +68,26 @@ objectFit='{{cover}}'
 
 </video>
 
+<view>
+
+
+
+        </view>
+
+                <!-- 评论区 -->
+
+        <view class="saySthView">
+        <input name="commentContent" class="saySth" placeholder="{{placeholder}}" confirm-type="send" bindconfirm="saveComment" focus='{{commentFocus}}' value='{{contentValue}}'
+        data-replyFatherCommentId='{{replyFatherCommentId}}'
+        data-replyToUserId='{{replyToUserId}}'
+        />
+        </view>
+
+
+
+
+        
+
 
 
 </view>

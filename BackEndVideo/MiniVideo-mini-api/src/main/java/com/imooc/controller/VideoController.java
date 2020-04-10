@@ -319,17 +319,16 @@ public class VideoController extends BasicController {
 		return IMoocJSONResult.ok();
 	}
 
-//
-//	@PostMapping("/saveComment")
-//	public IMoocJSONResult saveComment(@RequestBody Comments comment,
-//			String fatherCommentId, String toUserId) throws Exception {
-//
+	@ApiOperation(value="保存用户评论", notes="保存用户评论的接口")
+	@PostMapping("/saveComment")
+	public IMoocJSONResult saveComment(@RequestBody Comments comment) throws Exception {
+
 //		comment.setFatherCommentId(fatherCommentId);
 //		comment.setToUserId(toUserId);
-//
-//		videoService.saveComment(comment);
-//		return IMoocJSONResult.ok();
-//	}
+
+		videoService.saveComment(comment);
+		return IMoocJSONResult.ok();
+	}
 //
 //	@PostMapping("/getVideoComments")
 //	public IMoocJSONResult getVideoComments(String videoId, Integer page, Integer pageSize) throws Exception {

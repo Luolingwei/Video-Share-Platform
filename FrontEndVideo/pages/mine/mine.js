@@ -528,5 +528,25 @@ Page({
 
   },
 
+  showVideo: function(e){
+    var me = this;
+    console.log(e);
+    var arrindex = e.currentTarget.dataset.arrindex;
+    if (!me.data.myWorkFalg){
+      var videoInfo = me.data.myVideoList[arrindex];
+    } else if (!me.data.myLikesFalg){
+      var videoInfo = me.data.likeVideoList[arrindex];
+    } else if (!me.data.myFollowFalg) {
+      var videoInfo = me.data.followVideoList[arrindex];
+    }
+    // Json对象无法通过跳转传到下一个页面，先转成string
+    var videoInfo = JSON.stringify(videoInfo);
+    wx.redirectTo({
+      url: '../videoinfo/videoinfo?videoInfo='+videoInfo,
+    })
+
+
+  }
+
 
 })

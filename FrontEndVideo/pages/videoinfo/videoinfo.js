@@ -10,7 +10,10 @@ Page({
     videoInfo: {},
     userLikeVideo: false,
     publisher: {},
-    serverUrl: app.serverUrl
+    serverUrl: app.serverUrl,
+
+    // 评论相关
+    placeholder: '说点什么...'
   },
 
   videoCtx: {},
@@ -226,19 +229,139 @@ Page({
   },
 
   shareMe: function () {
+    var me = this;
+    wx.showActionSheet({
+      itemList: ['下载到本地','举报用户','分享到朋友圈','分享到QQ空间','分享到微博'],
+      success:function(res){
+        var idx = res.tapIndex;
+        if (idx == 0){
+          //下载
+          wx.showLoading({
+            title: '下载中...',
+          })
+          wx.downloadFile({
+            url: app.serverUrl + me.data.videoInfo.videoPath, //仅为示例，并非真实的资源
+            success (res) {
+              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+              if (res.statusCode === 200) {
+                console.log(res.tempFilePath);
+                wx.saveVideoToPhotosAlbum({
+                  filePath: res.tempFilePath,
+                  success (res) {
+                    console.log(res.errMsg);
+                    wx.hideLoading();
+                    wx.showToast({
+                      title: '下载成功',
+                      icon: 'success',
+                      duration: 2000
+                    })
+                  }
+                })
+              }
+            }
+          })
+        } else if (idx == 1){
+          //举报
+          // 若用户未登录，进行拦截并重定向回来
+          var videoInfo = JSON.stringify(me.data.videoInfo);
+          var realUrl = '../videoinfo/videoinfo#videoInfo@' + videoInfo;
+          var userInfo = app.getGlobalUserInfo();
+          // 如果用户信息为空(未登录), 直接跳转到登录页面
+          if (userInfo == null || userInfo == undefined || userInfo == '') {
+            wx.navigateTo({
+              url: '../userLogin/login?redirectUrl=' + realUrl,
+            })
+          } else {
+            var videoId = me.data.videoInfo.id;
+            var publisherId = me.data.videoInfo.userId;
+            wx.navigateTo({
+              url: '../report/report?videoId=' + videoId + '&publisherId=' + publisherId,
+            })
+          }
+        } else {
+          // 其他Tab
+          wx.showToast({
+            title: '官方暂未开放...',
+          })
+        }
+      }
+    })
+
+
   },
 
   onShareAppMessage: function (res) {
+    var me = this;
+    var videoInfo = JSON.stringify(me.data.videoInfo);
+    return {
+      title: '短视频内容转发',
+      path: "pages/videoinfo/videoinfo?videoInfo=" + videoInfo,
+    }
+
   },
 
 
   leaveComment: function () {
+
+    this.setData({
+      commentFocus: true,
+    })
+
   },
 
   replyFocus: function (e) {
   },
 
   saveComment: function (e) {
+    var me = this;
+    var userInfo = app.getGlobalUserInfo();
+
+    // 若用户未登录，进行拦截并重定向回来
+    var videoInfo = JSON.stringify(me.data.videoInfo);
+    var realUrl = '../videoinfo/videoinfo#videoInfo@' + videoInfo;
+    var userInfo = app.getGlobalUserInfo();
+    // 如果用户信息为空(未登录), 直接跳转到登录页面
+    if (userInfo == null || userInfo == undefined || userInfo == '') {
+      wx.navigateTo({
+        url: '../userLogin/login?redirectUrl=' + realUrl,
+      })
+    } else {
+      var comment = e.detail.value;
+      var videoId = me.data.videoInfo.id;
+      var fromUserId = userInfo.id;
+      var serverUrl = app.serverUrl;
+
+      wx.showLoading({
+        title: '请稍等...',
+      })
+      wx.request({
+        url: serverUrl + '/video/saveComment',
+        method: "POST",
+        header: {
+          'content-type': 'application/json', // 默认值
+          'userId': userInfo.id,
+          'userToken': userInfo.userToken
+        },
+        data: {
+          comment: comment,
+          videoId: videoId,
+          fromUserId: fromUserId,
+        },
+        success: function(res){
+          console.log(res.data);
+          wx.hideLoading();
+          me.setData({
+            contentValue: "",
+          })
+        }
+      })
+
+    }
+
+
+
+   
+
   },
 
 

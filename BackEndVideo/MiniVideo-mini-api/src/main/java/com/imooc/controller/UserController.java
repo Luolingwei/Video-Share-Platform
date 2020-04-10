@@ -164,14 +164,15 @@ public class UserController extends BasicController {
 		return IMoocJSONResult.ok("取消关注成功...");
 	}
 
-//
-//	@PostMapping("/reportUser")
-//	public IMoocJSONResult reportUser(@RequestBody UsersReport usersReport) throws Exception {
-//
-//		// 保存举报信息
-//		userService.reportUser(usersReport);
-//
-//		return IMoocJSONResult.errorMsg("举报成功...有你平台变得更美好...");
-//	}
+
+	@ApiOperation(value="举报用户", notes="举报用户的接口")
+	@PostMapping("/reportUser")
+	public IMoocJSONResult reportUser(@RequestBody UsersReport usersReport) throws Exception {
+
+		// 保存举报信息
+		userService.reportUser(usersReport);
+
+		return IMoocJSONResult.ok("举报成功...有你平台变得更美好...");
+	}
 	
 }
