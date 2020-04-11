@@ -14,7 +14,6 @@
         <module>MiniVideo-mapper</module>
         <module>MiniVideo-service</module>
         <module>MiniVideo-mini-api</module>
-        <module>mybatis-generatorConfig</module>
     </modules>
 
     <name>微信小程序-短视频实战</name>

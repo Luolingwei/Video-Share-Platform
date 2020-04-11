@@ -10,9 +10,11 @@
         <module name="MiniVideo-mapper" />
         <module name="MiniVideo-common" />
         <module name="MiniVideo-service" />
-        <module name="mybatis-generatorConfig" />
         <module name="MiniVideo-mini-api" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mybatis-generatorConfig" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
