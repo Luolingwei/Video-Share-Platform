@@ -46,24 +46,24 @@ Program presentation
 ---------------------------------------------------
 
 <center class="half">
-    <img src="Pictures/IMG_2187.png" width="320"/>
-    <img src="Pictures/IMG_2188.png" width="320"/>
+    <img src="Pictures/IMG_2187.jpg" width="320"/>
+    <img src="Pictures/IMG_2188.jpg" width="320"/>
 </center>
 <center class="half">
-    <img src="Pictures/IMG_2189.png" width="320"/>
-    <img src="Pictures/IMG_2190.png" width="320"/>
+    <img src="Pictures/IMG_2189.jpg" width="320"/>
+    <img src="Pictures/IMG_2190.jpg" width="320"/>
 </center>
 <center class="half">
-    <img src="Pictures/IMG_2192.png" width="320"/>
-    <img src="Pictures/IMG_2193.png" width="320"/>
+    <img src="Pictures/IMG_2192.jpg" width="320"/>
+    <img src="Pictures/IMG_2193.jpg" width="320"/>
 </center>
 <center class="half">
-    <img src="Pictures/IMG_2191.png" width="320"/>
-    <img src="Pictures/IMG_2195.png" width="320"/>
+    <img src="Pictures/IMG_2191.jpg" width="320"/>
+    <img src="Pictures/IMG_2195.jpg" width="320"/>
 </center>
 <center class="half">
-    <img src="Pictures/IMG_2185.png" width="320"/>
-    <img src="Pictures/IMG_2194.png" width="320"/>
+    <img src="Pictures/IMG_2185.jpg" width="320"/>
+    <img src="Pictures/IMG_2194.jpg" width="320"/>
 </center>
 
 
