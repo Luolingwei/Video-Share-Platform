@@ -39,32 +39,30 @@ Program presentation
 ---------
 
 ---------------------------------------------------
-<center class="half">
+
+<figure class="half">
     <img src="Pictures/Swagger2.png" width="800"/>
-</center>
+</figure>
 
 ---------------------------------------------------
 
-<center class="half">
+<figure class="half">
     <img src="Pictures/IMG_2187.jpg" width="320"/>
     <img src="Pictures/IMG_2188.jpg" width="320"/>
-</center>
-<center class="half">
+</figure>
+<figure class="half">
     <img src="Pictures/IMG_2189.jpg" width="320"/>
     <img src="Pictures/IMG_2190.jpg" width="320"/>
-</center>
-<center class="half">
+</figure>
+<figure class="half">
     <img src="Pictures/IMG_2192.jpg" width="320"/>
     <img src="Pictures/IMG_2193.jpg" width="320"/>
-</center>
-<center class="half">
+</figure>
+<figure class="half">
     <img src="Pictures/IMG_2191.jpg" width="320"/>
     <img src="Pictures/IMG_2195.jpg" width="320"/>
-</center>
-<center class="half">
+</figure>
+<figure class="half">
     <img src="Pictures/IMG_2185.jpg" width="320"/>
     <img src="Pictures/IMG_2194.jpg" width="320"/>
-</center>
-
-
-
+</figure>
