@@ -29,7 +29,7 @@ public class CommentsVO {
     private String nickname;
     private String toNickname;
     private String timeAgoStr;
-    
+
 
     public String getTimeAgoStr() {
 		return timeAgoStr;

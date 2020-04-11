@@ -321,34 +321,49 @@ public class VideoController extends BasicController {
 
 	@ApiOperation(value="保存用户评论", notes="保存用户评论的接口")
 	@PostMapping("/saveComment")
-	public IMoocJSONResult saveComment(@RequestBody Comments comment) throws Exception {
+	public IMoocJSONResult saveComment(@RequestBody Comments comment, String fatherCommentId, String toUserId) throws Exception {
 
-//		comment.setFatherCommentId(fatherCommentId);
-//		comment.setToUserId(toUserId);
+		if (!StringUtils.isBlank(fatherCommentId)){
+			comment.setFatherCommentId(fatherCommentId);
+		}
+
+		if (!StringUtils.isBlank(toUserId)){
+			comment.setToUserId(toUserId);
+		}
 
 		videoService.saveComment(comment);
 		return IMoocJSONResult.ok();
 	}
-//
-//	@PostMapping("/getVideoComments")
-//	public IMoocJSONResult getVideoComments(String videoId, Integer page, Integer pageSize) throws Exception {
-//
-//		if (StringUtils.isBlank(videoId)) {
-//			return IMoocJSONResult.ok();
-//		}
-//
-//		// 分页查询视频列表，时间顺序倒序排序
-//		if (page == null) {
-//			page = 1;
-//		}
-//
-//		if (pageSize == null) {
-//			pageSize = 10;
-//		}
-//
-//		PagedResult list = videoService.getAllComments(videoId, page, pageSize);
-//
-//		return IMoocJSONResult.ok(list);
-//	}
+
+	@ApiImplicitParams({
+			@ApiImplicitParam(name="videoId", value="视频id", required=true,
+					dataType="String", paramType="form"),
+			@ApiImplicitParam(name="page", value="请求的第几页", required=false,
+					dataType="integer", paramType="form"),
+			@ApiImplicitParam(name="pageSize", value="每页的大小", required=false,
+					dataType="integer", paramType="form")
+	})
+	@ApiOperation(value="请求视频的评论", notes="请求视频评论的接口")
+	@PostMapping("/getVideoComments")
+	public IMoocJSONResult getVideoComments(String videoId, Integer page, Integer pageSize) throws Exception {
+
+		if (StringUtils.isBlank(videoId)) {
+			return IMoocJSONResult.ok();
+		}
+
+		// 分页查询视频列表，时间顺序倒序排序
+		if (page == null) {
+			page = 1;
+		}
+
+		if (pageSize == null) {
+			pageSize = 3;
+		}
+
+		PagedResult list = videoService.getAllComments(videoId, page, pageSize);
+
+		return IMoocJSONResult.ok(list);
+
+	}
 	
 }

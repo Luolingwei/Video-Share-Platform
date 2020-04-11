@@ -13,7 +13,14 @@ Page({
     serverUrl: app.serverUrl,
 
     // 评论相关
-    placeholder: '说点什么...'
+    placeholder: '说点什么...',
+    commentsPage: 1,
+    commentsTotal: 1,
+    commentsList: [],
+
+    replyFatherCommentId: "",
+    replyToUserId: "",
+
   },
 
   videoCtx: {},
@@ -84,10 +91,7 @@ Page({
       },
     })
 
-
-
-
-
+    me.getCommentsList(1);
 
   },
 
@@ -310,11 +314,28 @@ Page({
   },
 
   replyFocus: function (e) {
+
+    var me = this;
+    var fathercommentid = e.currentTarget.dataset.fathercommentid;
+    var tonickname = e.currentTarget.dataset.tonickname;
+    var touserid = e.currentTarget.dataset.touserid;
+    
+    me.setData({
+      placeholder: "回复  " + tonickname,
+      replyFatherCommentId: fathercommentid,
+      replyToUserId: touserid,
+      commentFocus: true
+    })
+
   },
 
   saveComment: function (e) {
     var me = this;
     var userInfo = app.getGlobalUserInfo();
+    
+    //先获取回复类型评论的参数(可能没有)
+    var replyFatherCommentId = me.data.replyFatherCommentId;
+    var replyToUserId = me.data.replyToUserId;
 
     // 若用户未登录，进行拦截并重定向回来
     var videoInfo = JSON.stringify(me.data.videoInfo);
@@ -335,7 +356,7 @@ Page({
         title: '请稍等...',
       })
       wx.request({
-        url: serverUrl + '/video/saveComment',
+        url: serverUrl + '/video/saveComment?fatherCommentId=' + replyFatherCommentId + '&toUserId=' + replyToUserId,
         method: "POST",
         header: {
           'content-type': 'application/json', // 默认值
@@ -350,24 +371,78 @@ Page({
         success: function(res){
           console.log(res.data);
           wx.hideLoading();
+          // 发送评论后从头开始展示comment，并且将replyFatherCommentId,replyToUserId置为空, 下次再点回复才能拿到
           me.setData({
             contentValue: "",
+            commentsList: [],
+            replyFatherCommentId: "",
+            replyToUserId: "",
           })
+          me.getCommentsList(1);
         }
       })
 
     }
 
 
-
-   
-
   },
 
-
+  // commentsPage: 1,
+  // commentsTotal: 1,
+  // commentsList: [],
   getCommentsList: function (page) {
+
+    var me = this;
+    var serverUrl = app.serverUrl;
+    var videoId = me.data.videoInfo.id;
+    wx.showLoading({
+      title: '请等待，加载中...',
+    });
+    wx.request({
+      url: serverUrl + '/video/getVideoComments?page=' + page + '&videoId=' + videoId,
+      method: "POST",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        wx.hideLoading();
+        // debugger;
+        console.log(res.data);
+        // 判断当前页page是否是第一页，如果是第一页，那么设置videoList为空 (为了下拉刷新设置)
+        // if (page === 1) {
+        //   me.setData({
+        //     commentsList: []
+        //   });
+        // }
+        var commentsList = res.data.data.rows;
+        var newVideoList = me.data.commentsList;
+
+        me.setData({
+          commentsList: newVideoList.concat(commentsList),
+          commentsPage: page,
+          commentsTotal: res.data.data.total
+        });
+
+      }
+    })
+
   },
 
   onReachBottom: function () {
+    var me = this;
+    var curPage = me.data.commentsPage;
+    var totalPage = me.data.commentsTotal;
+    // 所有评论Page已用完
+    if (curPage==totalPage){
+      wx.showToast({
+        title: '已经没有评论啦~~',
+        icon: 'none'
+      })
+      return;
+    }
+    // 评论Page还未用完
+    var page = curPage + 1;
+    me.getCommentsList(page);
+
   }
 })

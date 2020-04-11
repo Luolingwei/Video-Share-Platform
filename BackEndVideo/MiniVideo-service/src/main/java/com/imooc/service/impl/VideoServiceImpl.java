@@ -199,25 +199,24 @@ public class VideoServiceImpl implements VideoService {
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
 	public PagedResult getAllComments(String videoId, Integer page, Integer pageSize) {
-		
-		PageHelper.startPage(page, pageSize);
-		
+
+		PageHelper.startPage(page,pageSize);
 		List<CommentsVO> list = commentMapperCustom.queryComments(videoId);
-		
-			for (CommentsVO c : list) {
-				String timeAgo = TimeAgoUtils.format(c.getCreateTime());
-				c.setTimeAgoStr(timeAgo);
-			}
-		
+
+		for (CommentsVO vo: list){
+			String timeAgo = TimeAgoUtils.format(vo.getCreateTime());
+			vo.setTimeAgoStr(timeAgo);
+		}
+
 		PageInfo<CommentsVO> pageList = new PageInfo<>(list);
-		
-		PagedResult grid = new PagedResult();
-		grid.setTotal(pageList.getPages());
-		grid.setRows(list);
-		grid.setPage(page);
-		grid.setRecords(pageList.getTotal());
-		
-		return grid;
+		PagedResult pagedResult = new PagedResult();
+		pagedResult.setPage(page);
+		pagedResult.setTotal(pageList.getPages());
+		pagedResult.setRecords(pageList.getTotal());
+		pagedResult.setRows(list);
+
+		return pagedResult;
+
 	}
 
 }

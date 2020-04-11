@@ -6,12 +6,12 @@ import javax.persistence.*;
 public class Comments {
     @Id
     private String id;
-//
-//    @Column(name = "father_comment_id")
-//    private String fatherCommentId;
-//
-//    @Column(name = "to_user_id")
-//    private String toUserId;
+
+    @Column(name = "father_comment_id")
+    private String fatherCommentId;
+
+    @Column(name = "to_user_id")
+    private String toUserId;
 
     /**
      * 视频id
@@ -47,33 +47,33 @@ public class Comments {
         this.id = id;
     }
 
-//    /**
-//     * @return father_comment_id
-//     */
-//    public String getFatherCommentId() {
-//        return fatherCommentId;
-//    }
-//
-//    /**
-//     * @param fatherCommentId
-//     */
-//    public void setFatherCommentId(String fatherCommentId) {
-//        this.fatherCommentId = fatherCommentId;
-//    }
-//
-//    /**
-//     * @return to_user_id
-//     */
-//    public String getToUserId() {
-//        return toUserId;
-//    }
-//
-//    /**
-//     * @param toUserId
-//     */
-//    public void setToUserId(String toUserId) {
-//        this.toUserId = toUserId;
-//    }
+    /**
+     * @return father_comment_id
+     */
+    public String getFatherCommentId() {
+        return fatherCommentId;
+    }
+
+    /**
+     * @param fatherCommentId
+     */
+    public void setFatherCommentId(String fatherCommentId) {
+        this.fatherCommentId = fatherCommentId;
+    }
+
+    /**
+     * @return to_user_id
+     */
+    public String getToUserId() {
+        return toUserId;
+    }
+
+    /**
+     * @param toUserId
+     */
+    public void setToUserId(String toUserId) {
+        this.toUserId = toUserId;
+    }
 
     /**
      * 获取视频id
