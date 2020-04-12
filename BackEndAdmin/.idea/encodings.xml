@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Admin-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Admin-mapper/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Admin-mng/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Admin-pojo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Admin-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

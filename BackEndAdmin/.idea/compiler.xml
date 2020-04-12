@@ -9,6 +9,7 @@
         <module name="Admin-common" />
         <module name="Admin-pojo" />
         <module name="Admin-service" />
+        <module name="Admin-mng" />
         <module name="Admin-mapper" />
       </profile>
     </annotationProcessing>
