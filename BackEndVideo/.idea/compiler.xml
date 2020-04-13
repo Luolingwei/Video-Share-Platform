@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MiniVideo-mini-api" />
         <module name="MiniVideo-common" />
         <module name="MiniVideo-mapper" />
+        <module name="MiniVideo-mini-api" />
         <module name="MiniVideo-pojo" />
         <module name="MiniVideo-service" />
       </profile>

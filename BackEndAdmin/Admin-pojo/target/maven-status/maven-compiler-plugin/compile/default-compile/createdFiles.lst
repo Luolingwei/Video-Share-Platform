@@ -18,3 +18,4 @@ com/imooc/pojo/Bgm.class
 com/imooc/pojo/UsersReportExample$Criteria.class
 com/imooc/pojo/UsersReportExample$Criterion.class
 com/imooc/pojo/VideosExample$Criteria.class
+com/imooc/pojo/vo/Reports.class
