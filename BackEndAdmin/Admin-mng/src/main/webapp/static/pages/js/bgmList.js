@@ -1,22 +1,22 @@
-var deleteBgm = function(bgmId) {
+// var deleteBgm = function(bgmId) {
 	
-	var flag = window.confirm("是否确认删除？？？");
-	if (!flag) {
-		return;
-	}
+// 	var flag = window.confirm("是否确认删除？？？");
+// 	if (!flag) {
+// 		return;
+// 	}
 	
-	$.ajax({
-		url: $("#hdnContextPath").val() + '/video/delBgm.action?bgmId=' + bgmId,
-		type: "POST",
-		success: function(data) {
-			if (data.status == 200 && data.msg == 'OK') {
-				alert('删除成功~~');
-				var jqGrid = $("#bgmList");  
-				jqGrid.jqGrid().trigger("reloadGrid");
-			}
-		}
-	})
-}
+// 	$.ajax({
+// 		url: $("#hdnContextPath").val() + '/video/delBgm.action?bgmId=' + bgmId,
+// 		type: "POST",
+// 		success: function(data) {
+// 			if (data.status == 200 && data.msg == 'OK') {
+// 				alert('删除成功~~');
+// 				var jqGrid = $("#bgmList");  
+// 				jqGrid.jqGrid().trigger("reloadGrid");
+// 			}
+// 		}
+// 	})
+// }
 
 var BgmList = function() {
 

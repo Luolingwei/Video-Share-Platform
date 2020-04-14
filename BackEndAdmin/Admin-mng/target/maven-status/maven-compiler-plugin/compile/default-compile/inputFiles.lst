@@ -1,2 +1,6 @@
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-mng/src/main/java/com/imooc/controller/BasicController.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-mng/src/main/java/com/imooc/controller/UsersController.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-mng/src/main/java/com/imooc/controller/VideoController.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-mng/src/main/java/com/imooc/bean/AdminUser.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-mng/src/main/java/com/imooc/controller/HelloController.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-mng/src/main/java/com/imooc/interceptor/LoginInterceptor.java
