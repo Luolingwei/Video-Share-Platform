@@ -42,5 +42,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		return new MiniInterceptor();
 	}
 
+	@Bean(initMethod = "init")
+	public ZKCuratorClient zkCuratorClient(){
+		return new ZKCuratorClient();
+	}
 
 }

@@ -55,6 +55,15 @@ public class VideoController extends BasicController{
 
 	}
 
+	@PostMapping("/delBgm")
+	@ResponseBody
+	public IMoocJSONResult delBgm(String bgmId) {
+
+		videoService.deleteBgm(bgmId);
+		return IMoocJSONResult.ok();
+
+	}
+
 	@PostMapping("/bgmUpload")
 	@ResponseBody
 	public IMoocJSONResult bgmUpload(@RequestParam("file") MultipartFile[] files) throws Exception {

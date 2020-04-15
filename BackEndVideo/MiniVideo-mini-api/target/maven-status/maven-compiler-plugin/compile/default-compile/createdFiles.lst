@@ -1,5 +1,7 @@
 com/imooc/controller/BasicController.class
 com/imooc/controller/RegistLoginController.class
+com/imooc/ZKCuratorClient.class
 com/imooc/Swagger2.class
 com/imooc/controller/BgmController.class
 com/imooc/Application.class
+com/imooc/ZKCuratorClient$1.class

@@ -1,22 +1,22 @@
-// var deleteBgm = function(bgmId) {
+var deleteBgm = function(bgmId) {
 	
-// 	var flag = window.confirm("是否确认删除？？？");
-// 	if (!flag) {
-// 		return;
-// 	}
+	var flag = window.confirm("是否确认删除？？？");
+	if (!flag) {
+		return;
+	}
 	
-// 	$.ajax({
-// 		url: $("#hdnContextPath").val() + '/video/delBgm.action?bgmId=' + bgmId,
-// 		type: "POST",
-// 		success: function(data) {
-// 			if (data.status == 200 && data.msg == 'OK') {
-// 				alert('删除成功~~');
-// 				var jqGrid = $("#bgmList");  
-// 				jqGrid.jqGrid().trigger("reloadGrid");
-// 			}
-// 		}
-// 	})
-// }
+	$.ajax({
+		url: $("#hdnContextPath").val() + '/video/delBgm.action?bgmId=' + bgmId,
+		type: "POST",
+		success: function(data) {
+			if (data.status == 200 && data.msg == 'OK') {
+				alert('删除成功~~');
+				var jqGrid = $("#bgmList");  
+				jqGrid.jqGrid().trigger("reloadGrid");
+			}
+		}
+	})
+}
 
 var BgmList = function() {
 
@@ -26,7 +26,6 @@ var BgmList = function() {
     	// 上下文对象路径
 		var hdnContextPath = $("#hdnContextPath").val();
 		var bgmServer = $("#bgmServer").val();
-		
 		
 		var jqGrid = $("#bgmList");  
         jqGrid.jqGrid({  
@@ -42,7 +41,6 @@ var BgmList = function() {
                 { name: 'author', index: 'author', width: 20 },
                 { name: 'path', index: 'path', width: 50, 
                 	formatter: function(cellvalue, option, rowObject){
-                		
                 		var src = bgmServer + cellvalue;
                 		var html = "<a href='" + src + "' target='_blank'>点我播放</a>"
                 		
