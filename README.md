@@ -74,7 +74,7 @@ Program presentation
 ---------------------------------------------------
 
 <div align=center>
-<img src="Pictures/Swagger2.png" width="800"/>
+<img src="Pictures/Video/Swagger2.png" width="850"/>
 </div>
 
 ---------------------------------------------------
@@ -110,25 +110,25 @@ Program presentation
 ---------------------------------------------------
 
 <div align="center">
-    <img src="Pictures/Admin/01.png" width="700"/>
+    <img src="Pictures/Admin/01.png" width="850"/>
 </div>
 
 <div align="center">
-    <img src="Pictures/Admin/02.png" width="700"/>
+    <img src="Pictures/Admin/02.png" width="850"/>
 </div>
 
 <div align="center">
-    <img src="Pictures/Admin/03.png" width="700"/>
+    <img src="Pictures/Admin/03.png" width="850"/>
 </div>
 
 <div align="center">
-    <img src="Pictures/Admin/04.png" width="700"/>
+    <img src="Pictures/Admin/04.png" width="850"/>
 </div>
 
 <div align="center">
-    <img src="Pictures/Admin/05.png" width="700"/>
+    <img src="Pictures/Admin/05.png" width="850"/>
 </div>
 
 <div align="center">
-    <img src="Pictures/Admin/06.png" width="700"/>
+    <img src="Pictures/Admin/06.png" width="850"/>
 </div>
