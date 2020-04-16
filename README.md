@@ -54,6 +54,7 @@ Supported modules
 
 * Video Admin
   * User related:
+    * Admin login
     * User list query
     * Search specific user 
 
@@ -69,34 +70,65 @@ Supported modules
 Program presentation
 ---------
 
+* Video App
 ---------------------------------------------------
 
-<figure class="half">
-    <img src="Pictures/Swagger2.png" width="800"/>
-</figure>
+<div align=center>
+<img src="Pictures/Swagger2.png" width="800"/>
+</div>
 
 ---------------------------------------------------
 <div align="center">
-<img src="Pictures/IMG_2187.jpg" width="320"/>    <img src="Pictures/IMG_2188.jpg" width="320"/>    
+    <img src="Pictures/Video/IMG_2187.jpg" width="320"/>
+    <img src="Pictures/Video/IMG_2188.jpg" width="320"/>
 </div>
 
-<figure class="half">
-    <img src="Pictures/IMG_2187.jpg" width="320"/>
-    <img src="Pictures/IMG_2188.jpg" width="320"/>
-</figure>
-<figure class="half">
-    <img src="Pictures/IMG_2189.jpg" width="320"/>
-    <img src="Pictures/IMG_2190.jpg" width="320"/>
-</figure>
-<figure class="half">
-    <img src="Pictures/IMG_2192.jpg" width="320"/>
-    <img src="Pictures/IMG_2193.jpg" width="320"/>
-</figure>
-<figure class="half">
-    <img src="Pictures/IMG_2191.jpg" width="320"/>
-    <img src="Pictures/IMG_2195.jpg" width="320"/>
-</figure>
-<figure class="half">
-    <img src="Pictures/IMG_2185.jpg" width="320"/>
-    <img src="Pictures/IMG_2194.jpg" width="320"/>
-</figure>
+<div align="center">
+    <img src="Pictures/Video/IMG_2189.jpg" width="320"/>
+    <img src="Pictures/Video/IMG_2190.jpg" width="320"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Video/IMG_2192.jpg" width="320"/>
+    <img src="Pictures/Video/IMG_2193.jpg" width="320"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Video/IMG_2191.jpg" width="320"/>
+    <img src="Pictures/Video/IMG_2195.jpg" width="320"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Video/IMG_2185.jpg" width="320"/>
+    <img src="Pictures/Video/IMG_2194.jpg" width="320"/>
+</div>
+
+---------------------------------------------------
+
+* Video Admin
+
+---------------------------------------------------
+
+<div align="center">
+    <img src="Pictures/Admin/01.png" width="700"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Admin/02.png" width="700"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Admin/03.png" width="700"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Admin/04.png" width="700"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Admin/05.png" width="700"/>
+</div>
+
+<div align="center">
+    <img src="Pictures/Admin/06.png" width="700"/>
+</div>
