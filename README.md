@@ -27,7 +27,7 @@ Overview
   * Backend
     * Language: Java
     * Framework: Spring MVC
-    * Tools: zookeeper, maven
+    * Tools: zookeeper, maven, tomcat7
 
   * Database
     * mysql + mybatis + mybatis-pagehelper
