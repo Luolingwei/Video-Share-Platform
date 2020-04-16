@@ -44,6 +44,7 @@
         <div class="logo">
             <a href="<%=request.getContextPath()%>/">
                 <img src="<%=request.getContextPath()%>/static/pages/img/logos/logo.png" /> 
+                <img style="position:absolute;left:0px;top:0px;width:100%;height:100%;z-Index:-1; border:1px solid black" src="<%=request.getContextPath()%>/static/pages/img/background.jpg" />
             </a>
         </div>
         <!-- END LOGO -->

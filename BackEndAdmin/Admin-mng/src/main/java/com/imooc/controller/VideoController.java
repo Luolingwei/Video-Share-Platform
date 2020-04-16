@@ -1,4 +1,5 @@
 package com.imooc.controller;
+import com.imooc.enums.VideoStatusEnum;
 import com.imooc.pojo.Bgm;
 import com.imooc.service.VideoService;
 import com.imooc.utils.PagedResult;
@@ -40,10 +41,29 @@ public class VideoController extends BasicController{
 		return "video/addBgm";
 	}
 
+	@GetMapping("/showReportList")
+	public String showReportList() {
+		return "video/reportList";
+	}
+
 	@PostMapping("/queryBgmList")
 	@ResponseBody
 	public PagedResult queryBgmList(Integer page) {
 		return videoService.queryBgmList(page, PAGE_SIZE);
+	}
+
+	@PostMapping("/reportList")
+	@ResponseBody
+	public PagedResult reportList(Integer page) {
+		return videoService.queryReportList(page, PAGE_SIZE);
+	}
+
+	@PostMapping("/forbidVideo")
+	@ResponseBody
+	public IMoocJSONResult forbidVideo(String videoId) {
+
+		videoService.updateVideoStatus(videoId,VideoStatusEnum.FORBID.value);
+		return IMoocJSONResult.ok();
 	}
 
 	@PostMapping("/addBgm")

@@ -45,12 +45,12 @@ public class ZKCurator {
 	/**
 	 * 增加或者删除bgm, 向zk-server创建子节点，供小程序后端监听
 	 */
-	public void sendBgmOperator(String bgmId, String operType){
+	public void sendBgmOperator(String bgmId, String operObj){
 		try {
 			client.create().creatingParentsIfNeeded()
 					.withMode(CreateMode.PERSISTENT)  // 节点类型: 持久节点
 					.withACL(Ids.OPEN_ACL_UNSAFE)  //  acl: 匿名权限
-					.forPath("/bgm/" + bgmId, operType.getBytes());
+					.forPath("/bgm/" + bgmId, operObj.getBytes());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

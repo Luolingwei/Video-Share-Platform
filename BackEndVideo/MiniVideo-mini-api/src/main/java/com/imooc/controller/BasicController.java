@@ -18,8 +18,14 @@ public class BasicController {
 	
 	// ffmpeg所在目录
 	public static final String FFMPEG_EXE = "/Users/luolingwei/Application/ffmpeg/ffmpeg";
-	
+
+//	// SpringBoot服务器地址
+//	public static final String AppServerUrl = "http://192.168.1.178:8081";
+
 	// 每页分页的记录数
 	public static final Integer PAGE_SIZE = 7;
-	
+
+
+
+
 }

@@ -1,3 +1,5 @@
+com/imooc/service/UsersService.class
+com/imooc/service/Impl/UsersServiceImpl.class
 com/imooc/service/web/util/ZKCurator.class
 com/imooc/service/Impl/VideoServiceImpl.class
 com/imooc/service/VideoService.class

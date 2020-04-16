@@ -6,5 +6,7 @@
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/UserController.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/WebMvcConfig.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/interceptor/MiniInterceptor.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/ZKCuratorClient.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/RegistLoginController.java
 /Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/controller/HelloWorldController.java
+/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndVideo/MiniVideo-mini-api/src/main/java/com/imooc/config/ResourceConfig.java

@@ -11,7 +11,7 @@ var List = function () {
 		var jqGrid = $("#usersList");  
         jqGrid.jqGrid({  
             caption: "短视频用户列表",  
-            url: hdnContextPath + "/users/list.action",  
+            url: hdnContextPath + "/users/usersList.action",  
             mtype: "post",  
             styleUI: 'Bootstrap',//设置jqgrid的全局样式为bootstrap样式  
             datatype: "json",  
@@ -61,7 +61,7 @@ var List = function () {
         	var searchUsersListForm = $("#searchUserListForm");
         	jqGrid.jqGrid().setGridParam({ 
         		page: 1,
-                url: hdnContextPath + "/users/list.action?" + searchUsersListForm.serialize(),
+                url: hdnContextPath + "/users/usersList.action?" + searchUsersListForm.serialize(),
             }).trigger("reloadGrid");
         });
     }

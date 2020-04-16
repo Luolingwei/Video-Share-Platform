@@ -5,35 +5,66 @@ It is a Video Share Platform which is similar to TikTok
 
 Overview
 ---------
-* Frontend
-  * Language: JavaScript + HTML + CSS
+* Video App
+  * Frontend
+    * Language: JavaScript + HTML + CSS
 
-* Backend
-  * Language: Java
-  * Framework: Spring Boot
-  * Tools: redis, swagger2, ffmpeg, maven
+  * Backend
+    * Language: Java
+    * Framework: Spring Boot
+    * Tools: redis, swagger2, ffmpeg, maven
 
-* Database
-  * mysql + mybatis + mybatis-pagehelper
+  * Database
+    * mysql + mybatis + mybatis-pagehelper
+  
+
+* Video Admin
+  * Frontend
+    * Language: JavaScript + JSP + CSS
+    * Framework: Bootstrap + Jquery
+    * Tools: jqGrid
+
+  * Backend
+    * Language: Java
+    * Framework: Spring MVC
+    * Tools: zookeeper, maven
+
+  * Database
+    * mysql + mybatis + mybatis-pagehelper
 
 Supported modules
 ---------
-* User related:
-  * Regist, Login, Logout  
-  * ChangeFace
-  * Follow (unfollow) user
-  * Report user
+* Video App
+  * User related:
+    * Regist, Login, Logout  
+    * ChangeFace
+    * Follow (unfollow) user
+    * Report user
 
-* Video related
-  * User upload videos
-  * User combine video with bgm
-  * User like videos
-  * User check others' videos
-  * User comment on videos
-  * User reply to others' comments
-  * User repost video to friends
-  * User search videos by topic
-  * User download video
+  * Video related
+    * User upload videos
+    * User combine video with bgm
+    * User like videos
+    * User check others' videos
+    * User comment on videos
+    * User reply to others' comments
+    * User repost video to friends
+    * User search videos by topic
+    * User download video
+
+* Video Admin
+  * User related:
+    * User list query
+    * Search specific user 
+
+  * Video related:
+    * Add bgm  
+    * Delete bgm   
+    (Client will keep synchronization via zookeeper)
+    * User reports list query
+    * Prohibit videos
+
+
 
 Program presentation
 ---------
@@ -45,6 +76,9 @@ Program presentation
 </figure>
 
 ---------------------------------------------------
+<div align="center">
+<img src="Pictures/IMG_2187.jpg" width="320"/>    <img src="Pictures/IMG_2188.jpg" width="320"/>    
+</div>
 
 <figure class="half">
     <img src="Pictures/IMG_2187.jpg" width="320"/>
