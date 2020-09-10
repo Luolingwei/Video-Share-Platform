@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imooc.mapper.CommentsMapper">
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+<mapper namespace="com.llingwei.mapper.CommentsMapper">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -13,7 +13,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -25,7 +25,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -37,7 +37,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -49,7 +49,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -61,7 +61,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -73,7 +73,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -85,7 +85,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->
@@ -97,7 +97,7 @@
     <result column="to_user_id" jdbcType="VARCHAR" property="toUserId" />
     <result column="comment" jdbcType="LONGVARCHAR" property="comment" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Comments">
+  <resultMap id="BaseResultMap" type="com.llingwei.pojo.Comments">
     <!--
       WARNING - @mbg.generated
     -->

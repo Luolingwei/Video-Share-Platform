@@ -1,6 +1,6 @@
-com/imooc/controller/BasicController.class
-com/imooc/interceptor/LoginInterceptor.class
-com/imooc/controller/HelloController.class
-com/imooc/bean/AdminUser.class
-com/imooc/controller/VideoController.class
-com/imooc/controller/UsersController.class
+com/llingwei/interceptor/LoginInterceptor.class
+com/llingwei/controller/UsersController.class
+com/llingwei/controller/VideoController.class
+com/llingwei/controller/HelloController.class
+com/llingwei/controller/BasicController.class
+com/llingwei/bean/AdminUser.class

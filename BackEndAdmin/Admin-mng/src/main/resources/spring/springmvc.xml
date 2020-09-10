@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
-	<context:component-scan base-package="com.imooc.controller" />
+	<context:component-scan base-package="com.llingwei.controller" />
 
 	<!-- 自动创建代理 对@AspectJ注解的支持 -->
 	<!-- 通知spring使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller -->
@@ -33,7 +33,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/*/**"/>
 			<mvc:exclude-mapping path="/static/**"/>
-			<bean class="com.imooc.interceptor.LoginInterceptor">
+			<bean class="com.llingwei.interceptor.LoginInterceptor">
 				<property name="unCheckUrls">
 					<list>
 						<value>/users/login.action</value>

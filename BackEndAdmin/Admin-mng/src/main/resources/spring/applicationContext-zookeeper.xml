@@ -32,7 +32,7 @@
 	
 	<!-- 客户端配置 -->
 	<!-- init-method="init" 不使用zk的话，仅仅只是测试为了方便可以把这个方法暂时拿掉 -->
-	<bean id="ZKCurator" class="com.imooc.service.web.util.ZKCurator" init-method="init">
+	<bean id="ZKCurator" class="com.llingwei.service.web.util.ZKCurator" init-method="init">
 		<constructor-arg index="0" ref="client"></constructor-arg>
 
 	</bean>

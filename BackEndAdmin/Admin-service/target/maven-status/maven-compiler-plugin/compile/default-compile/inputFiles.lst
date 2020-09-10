@@ -1,5 +1,5 @@
-/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/imooc/service/web/util/ZKCurator.java
-/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/imooc/service/Impl/VideoServiceImpl.java
-/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/imooc/service/Impl/UsersServiceImpl.java
-/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/imooc/service/VideoService.java
-/Users/luolingwei/Desktop/Program/WeChatMiniVideo/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/imooc/service/UsersService.java
+/Users/luolingwei/Desktop/Program/VideoSharePlatform/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/llingwei/service/web/util/ZKCurator.java
+/Users/luolingwei/Desktop/Program/VideoSharePlatform/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/llingwei/service/Impl/VideoServiceImpl.java
+/Users/luolingwei/Desktop/Program/VideoSharePlatform/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/llingwei/service/UsersService.java
+/Users/luolingwei/Desktop/Program/VideoSharePlatform/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/llingwei/service/VideoService.java
+/Users/luolingwei/Desktop/Program/VideoSharePlatform/Video-Share-Platform/BackEndAdmin/Admin-service/src/main/java/com/llingwei/service/Impl/UsersServiceImpl.java
